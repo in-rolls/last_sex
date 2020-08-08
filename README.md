@@ -9,13 +9,21 @@ We ignore the long tail of last names because we cannot learn sex ratios reliabl
 Indian names are famously complicated. To infer last names, we create rules that lead to us making fewer false positives than negatives.
 
 Here's the algorithm we use:
+
 1. Start with `orig_df`. Create a column called `birth_year` (2017 - age).
 
 2. There are multiple steps to filtering to the base data frame:
-* Split names by space and store each word in a separate column. Assume the last word to be the last name and store in column `last_name.` Filter out one-word names and where the last word is fewer than two characters.
+
+* Split names by space and store each word in a separate column. Assume the last word to be the last name and store in column `last_name.`
+
+* Filter out one-word names and where the last word is fewer than two characters. We lose XXX records as a result of that.
+
 * Filter out names with non-alphabetical characters. We lose XXX records as a result of that.
+
 * Remove records of people who are recorded as being born before 1900 as we think those birth dates are unreliable. We lose XXX rows.
+
 * Remove people of "Third Gender" because we only have 4 four rows of people recorded as third gender.
+
 * Store the data frame as `base_df`.
 
 3. Filter to households with a non-missing household number. Store the data frame as `last_name_hh_no_df`.
