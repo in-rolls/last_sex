@@ -1,47 +1,47 @@
 ## Last Sex: Sex Ratio By Last Name
 
-Using data from the [Indian Electoral Rolls](https://github.com/in-rolls/electoral_rolls) (parsed data [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/MUEGDT)), we estimate sex ratio by last name to further pin down the kinds of people among whom sex selective abortion, etc. is particularly common.
+Using data from the [Indian Electoral Rolls](https://github.com/in-rolls/electoral_rolls) (parsed data [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/MUEGDT)), we estimate sex ratio by last name to pin down the kinds of people among whom sex-selective abortion and other sex-based discrimination is common. (We plan to augment the analysis with [SECC](https://github.com/in-rolls/secc) data soon.)
 
 We ignore the long tail of last names because we cannot learn sex ratios reliably where we don't have a large enough n. Instead, we focus on last names shared by at least 50,000 people.
 
-We first solve name parsing. We split people's names by word 'location'---first_word, second_word, etc. Then within households with more than 1 person, for all words greater than length 1, we look for words that are shared by 2 or more people. We create a new column called potential_last_name based on that. We then go back to the original dataset (including single member households) and allocate 'potential_last_name' to any name that matches our list. We then subset on potential_last_name that is shared by at least 100 households and come up with a column that is likely_last_name.
+### Last Name
 
-Of the households where we have members with likely_last_name, we group by on likely last name and birth_year (2017 - age) and produce four columns per state: `last_name, n_male, n_female, birth_year`. We then combine data from across all the states for which we have the data. And again group by sum by `last_name` to produce `last_name, n_male, n_female, birth_year`.
+Indian names are famously complicated. To infer last names, we create rules that lead to us making fewer false positives than negatives.
 
-We then aggregate over `birth_year` to get firstly an all up number by `last_name.` We then filter to last names where sum of `n_male` and `n_female` is over 50,000. We then estimate the sex ratio (n_male/n_female) per last name. We then reverse sort by sex ratio.
+Here's the algorithm we use:
+1. Start with `orig_df`. Create a column called `birth_year` (2017 - age).
 
-Sex Ratio by Year
-Data
-Unreliable Birth Year Data
+2. There are multiple steps to filtering to the base data frame:
+* Split names by space and store each word in a separate column. Assume the last word to be the last name and store in column `last_name.` Filter out one-word names and where the last word is fewer than two characters.
+* Filter out names with non-alphabetical characters. We lose XXX records as a result of that.
+* Remove records of people who are recorded as being born before 1900 as we think those birth dates are unreliable. We lose XXX rows.
+* Remove people of "Third Gender" because we only have 4 four rows of people recorded as third gender.
+* Store the data frame as `last_name_df`.
 
-We remove records of people who are recorded as being born before 1900 as we think those birth dates are unreliable. We hardly lose any data with this---we lost 115 of the 23.6M we started with. (We don't explicitly do it here but our filtering procedures on number of rows per last name per year removes anyone over 90.)
-Removing People of "Third Gender"
+3. Filter to households with a non-missing household number. Store the data frame as `last_name_hh_no_df`.
 
-Solely because of data paucity, we remove these records. There are only 4, which speaks to measurement issues.
-Enough Data
+4. Among households with more than one person, filter to last words shared by two or more people. Store these names in a list called `potential_last_names`.
 
-We filter on years where we have more than 5,000 observations.
-Result
-The sex ratio had two periods where the trend was clear upward: between 1920s and 1960 and starting 1990s.
+5. Go to the `last_name_df` and assign `potential_last_name` to any name that matches our list. Subset on `potential_last_name` that is shared by at least 100 households and create a list called `likely_last_name`.
 
-Sex Ratio by Last Name
-Next, we analyze by last name.
+6. Calculate sex-ratio by `likely_last_name` using `last_name_df`and filter out names where the sex ratio is over five or under .5 assuming that these ratios map to first names than last names. Store the list under `likely_last_name_sex_ratio_test.` (Here's a [list of names](data/potential_last_names_with_unlikely_sex_ratios.csv) that we filter as a result of this requirement.)
 
-Data
-We filter the data as follows:
+7. Go back to `last_name_df` and create a column called `best_guess_last_name` that matches any name in the `likely_last_name_sex_ratio_test.`
 
-We remove last names with non-alphabetical characters in them as we don't think they are . We lose 63,435 records as a result of that.
+### Analysis
 
-We first calculate sex ratio by last_name. We filter the data where the sex ratio is under .5 and over 5 because we think those last names are likely first names. This means we lose XXX records.
+Group `orig_df` by `birth_year`. Filter to years with more than 10,000 records. Plot.
 
-Next, we filter out the long tail of last names because we cannot learn sex ratios reliably where we don't have a large enough n. Instead, we focus on last names shared by at least 25,000 people. This leaves us with XXX rows.
-
-Next we group by year and only produce sex ratio estimates for last_names where the number of people with a particular last name for each of the years was 500 or more.
-
-The final data is [here](data/).
+Filter `last_name_df` to names with more than 10,000 records. Group the filtered dataset by `best_guess_last_name` and produce dataset with four columns `last_name, n_male, n_female, sex_ratio` and store as [sex_ratio_by_last_name](data/sex_ratio_by_last_name.csv).
 
 The top 50 most imbalanced ratios are plotted below.
+
+Group `last_name_df`by `best_guess_last_name` and `birth_year`. Filter the dataset to names with at least 500 records in at least 25 years. Output the dataset with five columns `last_name, birth_year, n_male, n_female, sex_ratio` and store as [sex_ratio_by_last_name](data/sex_ratio_by_last_name.csv).
 
 We then group by birth_year (collapsing over last_name) to see how sex_ratios have evolved over time.
 
 We then estimate within_last_name regression and estimate which last_names have seen sex ratios worsen over time.
+
+### Authors
+
+Suriyan Laohaprapanon and Gaurav Sood
