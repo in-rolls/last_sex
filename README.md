@@ -20,7 +20,7 @@ To infer last names, we look for last words in the name that are shared by more 
 
 ### Script
 
-* [Notebook](script/last_sex_best_guess_last_name.ipynb)
+* [Notebook](notebooks/last_sex_best_guess_last_name.ipynb)
 
 ### Results
 
@@ -28,7 +28,7 @@ We start by estimating aggregate sex ratios by last names that appear more than 
 
 ![](figs/top50_imbalanced.png)
 
-Next we subset on last names with at least 500 records in at least 25 years. We show the plot in this dynamic plotly graph [here]().
+Next we subset on last names with at least 500 records in at least 25 years. We show the plot in this dynamic plotly graph [here](figs/plot-hover.html).
 
 We then estimate a linear regression: `sex_ratio ~ birth_year + best_guess_last_name + e` using this [data](data/sex_ratio_by_last_name.csv)
 
