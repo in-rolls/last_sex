@@ -2,13 +2,9 @@ toppo
 ekka
 minj
 patel
-majhi
-munda
 tirkey
 rana
-thomas
 mondal
-rai
 mishra
 halder
 das
@@ -16,7 +12,6 @@ biswas
 jana
 kujur
 baroi
-jha
 sarkar
 roy
 kerketta
@@ -29,9 +24,6 @@ bhagat
 mandal
 bala
 lohar
-abdul
-mohammed
-mohamed
 polina
 dutta
 dung
@@ -41,16 +33,13 @@ kullu
 mani
 mallick
 adhikari
-bairagi
 ghosh
 dey
 mistry
 mazumder
-pal
 debnath
 sinha
 karmakar
-tiwari
 rama
 pandi
 kundu
@@ -63,13 +52,11 @@ lingam
 bepari
 choudhury
 vanka
-pandey
 chakraborty
 bhattacharjee
 patra
 bandi
 dummu
-mali
 prabhu
 nair
 tamang
@@ -81,13 +68,11 @@ sahu
 fernandes
 pari
 martins
-sheikh
 sutar
 sana
 dhar
 kanna
 naik
-giri
 sanga
 tirupathi
 nandi
@@ -102,7 +87,6 @@ souza
 mohamad
 gopu
 ratnam
-chauhan
 saragadam
 marla
 bhat
@@ -126,7 +110,6 @@ sayed
 bora
 sheela
 surya
-muni
 pires
 para
 jogi
@@ -148,7 +131,6 @@ kasturi
 natha
 patta
 sayyed
-suri
 panda
 panja
 matha
@@ -162,10 +144,8 @@ vuyyuru
 yarra
 kashi
 karki
-pandit
 thapa
 modak
-behera
 maji
 patil
 gurung
@@ -213,7 +193,6 @@ kadali
 bale
 sure
 gollavilli
-rayudu
 vandana
 deva
 kasi
@@ -307,15 +286,11 @@ palivela
 kotha
 seera
 ghanta
-kanti
 jakkula
 meka
-setty
-ao
 surada
 ragi
 bandari
-tara
 rudra
 mattaparti
 kasu
@@ -331,7 +306,6 @@ devarakonda
 nakka
 yeddula
 chowdam
-borah
 haokip
 korukonda
 dasi
@@ -372,7 +346,6 @@ gali
 peeta
 boddu
 banka
-jagannadham
 balam
 baddi
 sonar
@@ -388,7 +361,6 @@ kallu
 donga
 tota
 maila
-pandu
 kesari
 blah
 polimera
@@ -505,7 +477,6 @@ tayeng
 perme
 tamuk
 modi
-tana
 boda
 taba
 tata
@@ -660,7 +631,6 @@ kada
 rabon
 lanka
 challa
-budha
 nati
 macha
 nallam
@@ -686,9 +656,7 @@ gandu
 posa
 menda
 malli
-purohit
 male
-mahammad
 lamani
 yarram
 nongrum
@@ -761,12 +729,10 @@ gade
 road
 done
 allu
-na
 awomi
 mosa
 panga
 sade
-ranga
 gera
 swer
 pyngrope
@@ -862,7 +828,6 @@ shriram
 sarika
 sumer
 kurma
-mangi
 matangi
 badri
 mangala
@@ -900,7 +865,6 @@ salgaonkar
 devara
 silva
 costa
-sa
 gunturu
 balaga
 noronha
@@ -1374,7 +1338,6 @@ thadi
 marni
 kakarlapudi
 munagapati
-mandadi
 banala
 jalli
 mogili
@@ -1387,12 +1350,10 @@ metta
 touthang
 chaoba
 inaobi
-inaocha
 deevi
 naobi
 karam
 medapati
-inao
 pachuau
 khiangte
 pamei
@@ -1478,7 +1439,6 @@ nelli
 vatala
 colony
 pulla
-amulu
 jetti
 tirumala
 masharing
@@ -1645,7 +1605,6 @@ madiki
 kilari
 koduru
 mathangi
-linga
 zhimo
 tungoe
 kithan
@@ -1792,7 +1751,6 @@ gosala
 voleti
 dantuluri
 cherukuri
-lingareddy
 durgasi
 rapaka
 nunna
@@ -2232,7 +2190,6 @@ busireddy
 pasala
 yamala
 jampala
-ramireddy
 nakkala
 anumala
 adapala
