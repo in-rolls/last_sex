@@ -24,13 +24,11 @@ To infer last names, we look for last words in the name that are shared by more 
 
 ### Results
 
-We start by estimating aggregate sex ratios by last names that appear more than 10,000 times (output [here](sex_ratio_by_last_name.csv)). We plot the last names with the most skewed sex ratio:
+We start by estimating aggregate sex ratios by last names that appear more than 10,000 times (output [here](sex_ratio_by_last_name.csv)). We plot the last names with the most skewed (in favor of men) sex ratio:
 
 ![](figs/top50_imbalanced.png)
 
-Next we subset on last names with at least 500 records in at least 25 years. We show the plot in this dynamic plotly graph [here](figs/plot-hover.html).
-
-We then estimate a linear regression: `sex_ratio ~ birth_year + best_guess_last_name + e` using this [data](data/sex_ratio_by_last_name.csv)
+Next we subset on last names with at least 500 records in at least 25 years. We show the plot in this dynamic plotly graph [here](https://htmlpreview.github.io/?https://github.com/soodoku/last_sex/blob/master/figs/plot-hover.html).
 
 ### Authors
 
