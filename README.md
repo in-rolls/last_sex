@@ -28,7 +28,7 @@ We start by estimating aggregate sex ratios by last names that appear more than 
 
 ![](figs/top50_imbalanced.png)
 
-**Note:** It is good to ignore names by Mohammed and Syed as they are more often given to men.
+**Note:** Ignore names by Mohammed and Syed as they are more often given to men. We plan to produce another version of this graph after manually inspecting the list of last names and winnowing it to a set with as few false positives as possible.
 
 Next we subset on last names with at least 500 records in at least 25 years. (output [here](tabs/sex_ratio_by_last_name.csv)) We show the plot in this dynamic plotly graph [here](https://rawcdn.githack.com/soodoku/last_sex/b10b395e8db2edf94e0c7083cadce2dcc4ab5cb7/figs/plot-hover.html).
 
