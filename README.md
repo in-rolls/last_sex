@@ -16,7 +16,7 @@ We start by removing unreliable data and cases where we cannot infer the last na
 
 While there were at least 490k who identified as 'third gender' in India (based on the 2011 census, see [here](https://en.wikipedia.org/wiki/Hijra_(South_Asia)#cite_note-1)), or about .05% of the population, there were only eight people recorded as 'third gender' in the electoral rolls. The pro-rated expected number was ~ 17k. This suggests widespread underreporting. Given that only eight people were recorded as 'third gender,' precluding any analysis, we remove them from the data. This serves as the base data set we use for the analysis.
 
-To infer last names, we look for last words in the name that are shared by more than one person in the household. (To enable that, we remove records with a missing household number of households with more than 20 people.) We then check how many of these names are shared by at least 1000 households. Of these names, we calculate sex-ratio and filter out names where the sex ratio is over three or under .5 assuming that these ratios map to first names than last names. (Here's a [list of names](data/last_name_failed_sex_ratio.txt) that we remove and [here's the final list of last names](data/best_guess_last_name.txt).)
+To infer last names, we look for last words in the name that are shared by more than one person in the household. (To enable that, we remove records with a missing household number of households with more than 20 people.) We then check how many of these names are shared by at least 1000 households. Of these names, we calculate sex-ratio and filter out names where the sex ratio is over two or under .5 assuming that these ratios map to first names than last names or reflect castes where on marriage people change last names, e.g., among Brahmins and Kshatriyas, women changed their name to devi after marriage (Here's a [list of names](data/last_name_failed_sex_ratio.txt) that we remove and [here's the final list of last names](data/best_guess_last_name.txt).)
 
 ### Script
 
@@ -28,7 +28,9 @@ We start by estimating aggregate sex ratios by last names that appear more than 
 
 ![](figs/top50_imbalanced.png)
 
-Next we subset on last names with at least 500 records in at least 25 years. (output [here](tabs/sex_ratio_by_last_name.csv)) We show the plot in this dynamic plotly graph [here](https://htmlpreview.github.io/?https://github.com/soodoku/last_sex/blob/master/figs/plot-hover.html).
+It is good to ignore names by Mohammed and Abdul as they are more often given to men. Rest seem to track.
+
+Next we subset on last names with at least 500 records in at least 25 years. (output [here](tabs/sex_ratio_by_last_name.csv)) We show the plot in this dynamic plotly graph [here](https://rawcdn.githack.com/soodoku/last_sex/b10b395e8db2edf94e0c7083cadce2dcc4ab5cb7/figs/plot-hover.html).
 
 ### Authors
 

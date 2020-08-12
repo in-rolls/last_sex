@@ -1,13 +1,10 @@
 toppo
 ekka
-yadav
 minj
 patel
 majhi
-sharma
 munda
 tirkey
-sardar
 rana
 thomas
 mondal
@@ -20,7 +17,6 @@ jana
 kujur
 baroi
 jha
-choudhary
 sarkar
 roy
 kerketta
@@ -43,15 +39,12 @@ sen
 pinto
 kullu
 mani
-nath
 mallick
 adhikari
 bairagi
 ghosh
 dey
-thakur
 mistry
-sai
 mazumder
 pal
 debnath
@@ -59,13 +52,9 @@ sinha
 karmakar
 tiwari
 rama
-ray
 pandi
-pillai
 kundu
 shaikh
-kalam
-gupta
 saha
 bera
 pradhan
@@ -81,12 +70,10 @@ patra
 bandi
 dummu
 mali
-balu
 prabhu
 nair
 tamang
 sura
-valli
 barman
 molla
 mulla
@@ -94,7 +81,6 @@ sahu
 fernandes
 pari
 martins
-joseph
 sheikh
 sutar
 sana
@@ -110,7 +96,6 @@ kummari
 malik
 kamat
 dhara
-chaitanya
 lobo
 injeti
 souza
@@ -124,9 +109,7 @@ bhat
 gurav
 jain
 gonsalves
-mohana
 bhoopathi
-ramana
 sawant
 kar
 vipparthi
@@ -137,13 +120,10 @@ kanta
 saidu
 thatha
 joshi
-venkateswara
 basar
 jaan
 sayed
-chinna
 bora
-vikram
 sheela
 surya
 muni
@@ -152,7 +132,6 @@ para
 jogi
 chinni
 dai
-chand
 moru
 geddada
 ch
@@ -188,7 +167,6 @@ thapa
 modak
 behera
 maji
-sk
 patil
 gurung
 gari
@@ -199,7 +177,6 @@ sake
 mula
 chetri
 kodi
-rajput
 kale
 koda
 bhupathi
@@ -207,7 +184,6 @@ momin
 urang
 ghadi
 gadi
-ganapathi
 pathi
 midde
 bhai
@@ -219,11 +195,9 @@ sheik
 coutinho
 nanda
 sadhu
-ratan
 gulla
 mudi
 rayapureddy
-chowdari
 chanda
 bandaru
 tangudu
@@ -315,7 +289,6 @@ kollu
 kakarla
 anjuri
 palina
-dasu
 pilla
 tirupati
 neela
@@ -372,7 +345,6 @@ thota
 mane
 gandi
 kandula
-viswanadham
 adari
 gollapalli
 palli
@@ -381,7 +353,6 @@ beera
 mallela
 penumala
 manda
-sha
 molli
 mamidi
 sara
@@ -588,7 +559,6 @@ tadi
 baki
 koyu
 ete
-sonam
 tariang
 koch
 bagra
@@ -884,7 +854,6 @@ pakki
 koyya
 hangsing
 tellam
-babubhai
 devidas
 maram
 kunta
@@ -1047,9 +1016,7 @@ goes
 gampa
 jalmi
 jangam
-chaudari
 simoes
-reddi
 moghal
 mogal
 dande
@@ -1370,7 +1337,6 @@ kondur
 bandela
 kambala
 peram
-nayudu
 sanivarapu
 kandregula
 namana
@@ -1393,7 +1359,6 @@ pallala
 vanipenta
 kommineni
 kosana
-govindu
 guntur
 gunnam
 gadam
@@ -1419,11 +1384,8 @@ aala
 di
 peela
 metta
-guite
 touthang
-nanao
 chaoba
-yaima
 inaobi
 inaocha
 deevi
@@ -1786,7 +1748,6 @@ narla
 penumatsa
 parise
 miriyala
-ramadasu
 kamadi
 nimmakayala
 nandikolla
@@ -2027,8 +1988,6 @@ sanapala
 kuchipudi
 gandikota
 sanaka
-hanumantu
-pedda
 kandukuri
 pusala
 nadakuduru
@@ -2066,7 +2025,6 @@ koneti
 maddineni
 kayala
 sawrna
-edda
 vendra
 suda
 nadiminti
@@ -3298,7 +3256,6 @@ pitti
 thuraka
 galinki
 anke
-raaja
 mudragada
 singidi
 tanneru
