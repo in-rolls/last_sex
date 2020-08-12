@@ -1,52 +1,34 @@
-## Last Sex: Sex Ratio By Last Name
+## The Last Sexists: Adult Sex Ratio By Last Name
 
-Using data from the [Indian Electoral Rolls](https://github.com/in-rolls/electoral_rolls) (parsed data [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/MUEGDT)), we estimate sex ratio by last name to pin down the kinds of people among whom sex-selective abortion and other sex-based discrimination is common. (We plan to augment the analysis with [SECC](https://github.com/in-rolls/secc) data soon.)
+Using data on over 35M people from the [Indian Electoral Rolls](https://github.com/in-rolls/electoral_rolls) (parsed data [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/MUEGDT)), we estimate sex ratio by the last name. (We plan to augment the analysis with [SECC](https://github.com/in-rolls/secc) data soon.)
 
-We ignore the long tail of last names because we cannot learn sex ratios reliably where we don't have a large enough n. Instead, we focus on last names shared by at least 50,000 people.
+Well over 90 million women are 'missing' in just seven Asian countries (see  [here](https://kar.kent.ac.uk/11409/1/WW-missingwomen-05.pdf) and [here](https://web.archive.org/web/20130504072819/http://ucatlas.ucsc.edu/gender/Sen100M.html) among other places). India alone accounts for over 12M missing women under 19 (see [here](https://en.wikipedia.org/wiki/Missing_women#Estimates)). Worse, "the vast majority of missing women in India ... are of adult age." (see [here](https://www.econ.nyu.edu/user/debraj/Papers/AndersonRay.pdf) and [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3190369)). The situation in India is not alarming everywhere. The sex ratio is above 1.10 in Daman and Diu, Dadra and Nagar Haveli, Chandigarh, Delhi, Haryana, Punjab, Andaman and Nicobar Islands, Sikkim, and Uttar Pradesh and .92 in Kerala and .96 in Puducherry (based on 2011 census; see [here](https://en.wikipedia.org/wiki/List_of_states_and_union_territories_of_India_by_sex_ratio)). But coarse geographies like states---in India, a state can have 200M people---can hide a bunch. To address this gap, we exploit the electoral roll data to describe variation in sex ratios by last names.
 
-### Last Name
+### Data and Methods
+
+We use [parsed electoral rolls](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/MUEGDT) from 12 states and union territories:  Andaman and Nicobar Islands, Andhra Pradesh, Dadra and Nagar Haveli, Daman and Diu, Goa, Jammu and Kashmir, Manipur, Meghalaya, Mizoram, Nagaland, Puducherry. In all, we have data on about 35.6M adults. We start by filtering out unreliable data.
+
+### Last Names
 
 Indian names are famously complicated. To infer last names, we create rules that lead to us making fewer false positives than negatives.
 
-Here's the algorithm we use:
+We start by removing unreliable data and cases where we cannot infer the last name. We split the full name into words and remove one-word names and cases where the last word has fewer than two characters. We lose about 591k records as a result of that. Next, we remove names with non-alphabetical characters. We lose ~ 116k records as a result of that. We also remove cases where the birth date is before 1900. We lose 260 records as a result of that.
 
-1. Start with `orig_df`. Create a column called `birth_year` (2017 - age).
+While there were at least 490k who identified as 'third gender' in India (based on the 2011 census, see [here](https://en.wikipedia.org/wiki/Hijra_(South_Asia)#cite_note-1)), or about .05% of the population, there were only eight people recorded as 'third gender' in the electoral rolls. The pro-rated expected number was ~ 17k. This suggests widespread underreporting. Given that only eight people were recorded as 'third gender,' precluding any analysis, we remove them from the data. This serves as the base data set we use for the analysis.
 
-2. There are multiple steps to filtering to the base data frame:
+To infer last names, we look for last words in the name that are shared by more than one person in the household. (To enable that, we remove records with a missing household number of households with more than 20 people.) We then check how many of these names are shared by at least 1000 households. Of these names, we calculate sex-ratio and filter out names where the sex ratio is over three or under .5 assuming that these ratios map to first names than last names. (Here's a [list of names](data/last_name_failed_sex_ratio.txt) that we remove and [here's the final list of last names](data/best_guess_last_name.txt).)
 
-* Split names by space and store each word in a separate column. Assume the last word to be the last name and store in column `last_name.`
+### Script
 
-* Filter out one-word names and where the last word is fewer than two characters. We lose XXX records as a result of that.
+* [Notebook](script/last_sex_best_guess_last_name.ipynb)
 
-* Filter out names with non-alphabetical characters. We lose XXX records as a result of that.
+### Results
 
-* Remove records of people who are recorded as being born before 1900 as we think those birth dates are unreliable. We lose XXX rows.
+We start by estimating aggregate sex ratios by last names that appear more than 10,000 times (output [here](sex_ratio_by_last_name.csv)). We plot the last names with the most skewed sex ratio:
 
-* Remove people of "Third Gender" because we only have 4 four rows of people recorded as third gender.
+![](figs/top50_imbalanced.png)
 
-* Store the data frame as `base_df`.
-
-3. Filter to households with a non-missing household number. Store the data frame as `last_name_hh_no_df`.
-
-4. Among households with more than one person, filter to last words shared by two or more people. Store these names in a list called `potential_last_names`.
-
-5. Go to the `base_df` and assign `potential_last_name` to any name that matches our list. Subset on `potential_last_name` that is shared by at least 100 households and create a list called `likely_last_name`.
-
-6. Calculate sex-ratio by `likely_last_name` using `base_df`and filter out names where the sex ratio is over five or under .5 assuming that these ratios map to first names than last names. Store the list under `likely_last_name_sex_ratio_test.` (Here's a [list of names](data/potential_last_names_with_unlikely_sex_ratios.csv) that we filter as a result of this requirement.)
-
-7. Go back to `base_df` and create a column called `best_guess_last_name` that matches any name in the `likely_last_name_sex_ratio_test.`
-
-### Analysis
-
-Group `orig_df` by `birth_year`. Filter to years with more than 10,000 records. Plot.
-
-Filter `base_df` to names with more than 10,000 records. Group the filtered dataset by `best_guess_last_name` and produce dataset with four columns `last_name, n_male, n_female, sex_ratio` and store as [sex_ratio_by_last_name](data/sex_ratio_by_last_name.csv).
-
-The top 50 most imbalanced ratios are plotted below.
-
-Group `base_df`by `best_guess_last_name` and `birth_year`. Filter the dataset to names with at least 500 records in at least 25 years. Output the dataset with five columns `last_name, birth_year, n_male, n_female, sex_ratio` and store as [sex_ratio_by_last_name](data/sex_ratio_by_last_name.csv).
-
-We plot this here.
+Next we subset on last names with at least 500 records in at least 25 years. We show the plot in this dynamic plotly graph [here]().
 
 We then estimate a linear regression: `sex_ratio ~ birth_year + best_guess_last_name + e` using this [data](data/sex_ratio_by_last_name.csv)
 
